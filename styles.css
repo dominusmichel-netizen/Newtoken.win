@@ -93,27 +93,11 @@ body::after {
   flex-shrink: 0;
 }
 
-.nav-logo-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--gradient);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 14px;
-  color: white;
-  letter-spacing: -0.5px;
-}
-
-.nav-logo-text {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 18px;
-  color: white;
-  letter-spacing: -0.3px;
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .nav-links {

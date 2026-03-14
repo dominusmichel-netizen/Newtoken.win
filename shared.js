@@ -1,5 +1,5 @@
-// Shared navigation and footer for NewToken site
-// Included via <script src="shared.js"></script> in each page
+// Navegação e rodapé compartilhados — NewToken
+// Incluído via <script src="shared.js"></script> em cada página
 
 (function() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -9,32 +9,31 @@
   }
 
   const navHTML = `
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
       <div class="nav-inner">
-        <a href="index.html" class="nav-logo" aria-label="NewToken home">
-          <div class="nav-logo-icon" aria-hidden="true">NT</div>
-          <span class="nav-logo-text">NewToken</span>
+        <a href="index.html" class="nav-logo" aria-label="NewToken início">
+          <img src="logo-dark.png" alt="NewToken — Tecnologia e Automação com IA" class="nav-logo-img">
         </a>
         <ul class="nav-links" role="list">
-          <li><a href="platform.html" class="${isActive('platform.html')}">Platform</a></li>
-          <li><a href="developers.html" class="${isActive('developers.html')}">Developers</a></li>
-          <li><a href="security.html" class="${isActive('security.html')}">Security</a></li>
-          <li><a href="contact.html" class="${isActive('contact.html')}">Contact</a></li>
+          <li><a href="platform.html" class="${isActive('platform.html')}">Plataforma</a></li>
+          <li><a href="developers.html" class="${isActive('developers.html')}">Desenvolvedores</a></li>
+          <li><a href="security.html" class="${isActive('security.html')}">Segurança</a></li>
+          <li><a href="contact.html" class="${isActive('contact.html')}">Contato</a></li>
         </ul>
         <div class="nav-cta">
-          <a href="contact.html" class="btn-ghost">Contact Sales</a>
-          <a href="developers.html" class="btn-primary">Start Building</a>
+          <a href="contact.html" class="btn-ghost">Falar com Vendas</a>
+          <a href="developers.html" class="btn-primary">Começar Agora</a>
         </div>
-        <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">
+        <button class="nav-hamburger" aria-label="Abrir menu" onclick="toggleMobileMenu()">
           <span></span><span></span><span></span>
         </button>
       </div>
       <div id="mobile-menu" style="display:none; padding:16px 24px 20px; border-top:1px solid rgba(99,120,255,0.15);">
-        <a href="platform.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Platform</a>
-        <a href="developers.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Developers</a>
-        <a href="security.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Security</a>
-        <a href="contact.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Contact</a>
-        <a href="developers.html" style="display:inline-block;margin-top:12px;" class="btn-primary">Start Building →</a>
+        <a href="platform.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Plataforma</a>
+        <a href="developers.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Desenvolvedores</a>
+        <a href="security.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Segurança</a>
+        <a href="contact.html" style="display:block;padding:10px 0;color:#7b8db0;text-decoration:none;font-size:15px;">Contato</a>
+        <a href="developers.html" style="display:inline-block;margin-top:12px;" class="btn-primary">Começar Agora →</a>
       </div>
     </nav>
   `;
@@ -45,39 +44,38 @@
         <div class="footer-grid">
           <div class="footer-brand">
             <a href="index.html" class="nav-logo" style="display:inline-flex;">
-              <div class="nav-logo-icon">NT</div>
-              <span class="nav-logo-text">NewToken</span>
+              <img src="logo-dark.png" alt="NewToken" class="nav-logo-img">
             </a>
-            <p>AI automation infrastructure for businesses integrating Meta technologies. Build with confidence, scale with trust.</p>
+            <p>Infraestrutura de automação com IA para empresas que integram as tecnologias Meta. Construa com confiança, escale com segurança.</p>
           </div>
           <div class="footer-col">
-            <h4>Product</h4>
+            <h4>Produto</h4>
             <ul>
-              <li><a href="platform.html">Platform</a></li>
-              <li><a href="developers.html">Developers</a></li>
-              <li><a href="security.html">Security</a></li>
-              <li><a href="developers.html#api">API Reference</a></li>
+              <li><a href="platform.html">Plataforma</a></li>
+              <li><a href="developers.html">Desenvolvedores</a></li>
+              <li><a href="security.html">Segurança</a></li>
+              <li><a href="developers.html#api">Referência da API</a></li>
             </ul>
           </div>
           <div class="footer-col">
-            <h4>Company</h4>
+            <h4>Empresa</h4>
             <ul>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="contact.html">Support</a></li>
+              <li><a href="contact.html">Contato</a></li>
+              <li><a href="contact.html">Suporte</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Legal</h4>
             <ul>
-              <li><a href="privacy.html">Privacy Policy</a></li>
-              <li><a href="terms.html">Terms of Service</a></li>
-              <li><a href="security.html">Security</a></li>
-              <li><a href="data-deletion.html">Data Deletion</a></li>
+              <li><a href="privacy.html">Política de Privacidade</a></li>
+              <li><a href="terms.html">Termos de Uso</a></li>
+              <li><a href="security.html">Segurança</a></li>
+              <li><a href="data-deletion.html">Exclusão de Dados</a></li>
             </ul>
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2026 NewToken Technology. All rights reserved.</span>
+          <span>© 2026 NewToken Tecnologia. Todos os direitos reservados.</span>
           <span style="font-family:var(--font-mono);font-size:12px;">newtoken.win</span>
         </div>
       </div>
