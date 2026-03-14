@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NewToken Security — Enterprise-grade security practices, encryption standards, data protection, and compliance for the NewToken AI automation platform.">
+  <meta name="robots" content="index, follow">
+  <title>Security — NewToken</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="badge"><span class="badge-dot"></span>Security</div>
+        <h1>Security by design</h1>
+        <p>NewToken is built on a security-first architecture. Every layer of the platform — from API access to data storage — is designed to protect your data and your customers' data.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+
+        <!-- SECURITY SUMMARY CARDS -->
+        <div class="grid-3" style="margin-bottom:80px;">
+          <div class="card" style="border-color:rgba(16,185,129,0.25);">
+            <div class="card-icon" style="background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);">🔒</div>
+            <h3>TLS 1.3 Encryption</h3>
+            <p>All data in transit is encrypted using TLS 1.3. We do not support TLS 1.0 or 1.1. HSTS headers are enforced on all domains.</p>
+          </div>
+          <div class="card" style="border-color:rgba(16,185,129,0.25);">
+            <div class="card-icon" style="background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);">🛡️</div>
+            <h3>Data Encryption at Rest</h3>
+            <p>All stored data is encrypted at rest using AES-256. Encryption keys are managed using a dedicated key management service with automatic rotation.</p>
+          </div>
+          <div class="card" style="border-color:rgba(16,185,129,0.25);">
+            <div class="card-icon" style="background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);">🔑</div>
+            <h3>Zero Trust Access</h3>
+            <p>Internal services communicate over private networks with mutual TLS. No service has implicit trust — every request is authenticated and authorized.</p>
+          </div>
+        </div>
+
+        <!-- SECURITY PRACTICES -->
+        <div class="grid-2" style="margin-bottom:80px;">
+          <div>
+            <div class="badge" style="margin-bottom:16px;"><span class="badge-dot"></span>API Security</div>
+            <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:white;letter-spacing:-0.8px;margin-bottom:16px;">Secure API access</h2>
+            <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:20px;">
+              NewToken API keys are scoped, rotatable, and auditable. Each key can be assigned granular permissions limiting access to specific endpoints and operations.
+            </p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                Scoped API keys with per-endpoint permission control
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                OAuth 2.0 for third-party integrations
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                Webhook request signing with HMAC-SHA256
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                Rate limiting and DDoS protection on all endpoints
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                IP allowlisting available for enterprise accounts
+              </li>
+            </ul>
+          </div>
+          <div>
+            <div class="badge" style="margin-bottom:16px;"><span class="badge-dot"></span>Data Protection</div>
+            <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:white;letter-spacing:-0.8px;margin-bottom:16px;">Data isolation &amp; privacy</h2>
+            <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:20px;">
+              NewToken implements strict data isolation between tenants. Your customers' data is never accessible to other customers or used for any purpose beyond the services you configure.
+            </p>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                Logical tenant isolation with separate encryption keys per account
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                Message content not stored beyond delivery confirmation window
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                No data sharing or resale to third parties under any circumstances
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                Configurable data retention policies per account
+              </li>
+              <li style="display:flex;gap:12px;align-items:flex-start;color:var(--text-muted);font-size:14px;">
+                <span style="color:var(--emerald);flex-shrink:0;">✓</span>
+                LGPD and GDPR compliant data processing agreements available
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- INFRASTRUCTURE SECURITY -->
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:48px;margin-bottom:80px;">
+          <div class="badge" style="margin-bottom:16px;"><span class="badge-dot"></span>Infrastructure</div>
+          <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:white;letter-spacing:-0.8px;margin-bottom:32px;">Infrastructure security</h2>
+          <div class="grid-3">
+            <div>
+              <div style="font-size:24px;margin-bottom:12px;">🏗️</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600;color:white;margin-bottom:8px;">Network Isolation</h3>
+              <p style="color:var(--text-muted);font-size:14px;line-height:1.6;">All production infrastructure runs in private subnets. Public access is limited to load balancers with WAF protection.</p>
+            </div>
+            <div>
+              <div style="font-size:24px;margin-bottom:12px;">📝</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600;color:white;margin-bottom:8px;">Audit Logging</h3>
+              <p style="color:var(--text-muted);font-size:14px;line-height:1.6;">Comprehensive audit logs for all API calls, authentication events, and administrative actions. Logs are immutable and retained for 12 months.</p>
+            </div>
+            <div>
+              <div style="font-size:24px;margin-bottom:12px;">🔍</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600;color:white;margin-bottom:8px;">Vulnerability Management</h3>
+              <p style="color:var(--text-muted);font-size:14px;line-height:1.6;">Regular penetration testing, automated dependency vulnerability scanning, and a responsible disclosure program for security researchers.</p>
+            </div>
+            <div>
+              <div style="font-size:24px;margin-bottom:12px;">🔄</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600;color:white;margin-bottom:8px;">Availability &amp; Backup</h3>
+              <p style="color:var(--text-muted);font-size:14px;line-height:1.6;">Multi-region deployment with automatic failover. Continuous database backups with point-in-time recovery up to 30 days.</p>
+            </div>
+            <div>
+              <div style="font-size:24px;margin-bottom:12px;">📋</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600;color:white;margin-bottom:8px;">Incident Response</h3>
+              <p style="color:var(--text-muted);font-size:14px;line-height:1.6;">24/7 security monitoring with defined incident response procedures. Affected customers are notified within 72 hours of any confirmed data incident.</p>
+            </div>
+            <div>
+              <div style="font-size:24px;margin-bottom:12px;">🧑‍💼</div>
+              <h3 style="font-family:var(--font-heading);font-size:16px;font-weight:600;color:white;margin-bottom:8px;">Access Control</h3>
+              <p style="color:var(--text-muted);font-size:14px;line-height:1.6;">Production access for NewToken employees is restricted, time-limited, and requires manager approval. Access is fully audited.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- META COMPLIANCE -->
+        <div style="margin-bottom:80px;">
+          <div class="badge" style="margin-bottom:16px;"><span class="badge-dot"></span>Meta Platform Compliance</div>
+          <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:white;letter-spacing:-0.8px;margin-bottom:16px;">Meta Platform compliance</h2>
+          <p style="color:var(--text-muted);font-size:15px;line-height:1.8;margin-bottom:24px;max-width:700px;">
+            NewToken operates in full compliance with Meta's Platform Terms, Developer Policies, and data use requirements. As a certified Tech Provider, our data handling practices have been reviewed and approved by Meta.
+          </p>
+          <div class="grid-2">
+            <div class="card">
+              <h3>Meta Platform Data Policy</h3>
+              <p>Data obtained through Meta's APIs is used only to provide the automation and messaging services configured by our business clients. We do not analyze, mine, or repurpose Meta Platform Data beyond service delivery.</p>
+            </div>
+            <div class="card">
+              <h3>Responsible Disclosure</h3>
+              <p>If you discover a security vulnerability in the NewToken platform, please report it responsibly to <a href="mailto:security@newtoken.win" style="color:var(--indigo-light);text-decoration:none;">security@newtoken.win</a>. We respond to all valid reports within 48 hours.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div style="text-align:center;padding:48px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:white;letter-spacing:-0.8px;margin-bottom:12px;">Security questions?</h2>
+          <p style="color:var(--text-muted);font-size:15px;margin-bottom:24px;">Our security team is available to answer questions from enterprise customers, auditors, and security researchers.</p>
+          <a href="mailto:security@newtoken.win" class="btn-primary">security@newtoken.win</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+  <script src="shared.js"></script>
+</body>
+</html>

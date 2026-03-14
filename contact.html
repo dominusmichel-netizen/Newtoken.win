@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact NewToken — Get in touch with our sales, developer support, or partnership team.">
+  <meta name="robots" content="index, follow">
+  <title>Contact — NewToken</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: var(--font-body);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(67,97,238,0.15);
+    }
+
+    .form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .form-success .success-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .contact-info-card {
+      background: rgba(67,97,238,0.06);
+      border: 1px solid rgba(67,97,238,0.2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-info-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: var(--font-mono);
+      margin-bottom: 4px;
+    }
+
+    .contact-info-value {
+      color: var(--text);
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .contact-info-value:hover {
+      color: var(--indigo-light);
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="badge"><span class="badge-dot"></span>Contact Us</div>
+        <h1>Get in touch</h1>
+        <p>Talk to our team about platform integrations, enterprise plans, or developer support.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- LEFT: Contact info -->
+          <div>
+            <h2 style="font-family:var(--font-heading);font-size:24px;font-weight:700;color:white;letter-spacing:-0.5px;margin-bottom:24px;">Contact information</h2>
+
+            <div class="contact-info-card">
+              <div class="contact-info-icon">📧</div>
+              <div>
+                <div class="contact-info-label">General Inquiries</div>
+                <a href="mailto:contact@newtoken.win" class="contact-info-value">contact@newtoken.win</a>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-info-icon">💼</div>
+              <div>
+                <div class="contact-info-label">Sales</div>
+                <a href="mailto:sales@newtoken.win" class="contact-info-value">sales@newtoken.win</a>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-info-icon">🛠️</div>
+              <div>
+                <div class="contact-info-label">Developer Support</div>
+                <a href="mailto:support@newtoken.win" class="contact-info-value">support@newtoken.win</a>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-info-icon">🔒</div>
+              <div>
+                <div class="contact-info-label">Security</div>
+                <a href="mailto:security@newtoken.win" class="contact-info-value">security@newtoken.win</a>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="contact-info-icon">⚖️</div>
+              <div>
+                <div class="contact-info-label">Privacy / Legal</div>
+                <a href="mailto:privacy@newtoken.win" class="contact-info-value">privacy@newtoken.win</a>
+              </div>
+            </div>
+
+            <div style="margin-top:32px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+              <div style="font-size:11px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:var(--font-mono);margin-bottom:12px;">Business Address</div>
+              <div style="color:var(--text-muted);font-size:14px;line-height:1.8;">
+                NewToken Technology<br>
+                Brazil<br>
+                <a href="https://newtoken.win" style="color:var(--indigo-light);text-decoration:none;">newtoken.win</a>
+              </div>
+            </div>
+
+            <div style="margin-top:16px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+              <div style="font-size:11px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-family:var(--font-mono);margin-bottom:12px;">Response Times</div>
+              <div style="color:var(--text-muted);font-size:14px;line-height:1.8;">
+                Sales: within 24 hours<br>
+                Developer support: within 48 hours<br>
+                Security: within 48 hours
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Contact form -->
+          <div class="contact-form-card">
+            <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white;margin-bottom:24px;letter-spacing:-0.3px;">Send us a message</h3>
+
+            <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="fname">First name</label>
+                  <input type="text" id="fname" name="fname" class="form-input" placeholder="João" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lname">Last name</label>
+                  <input type="text" id="lname" name="lname" class="form-input" placeholder="Silva" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Business email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="company">Company / Organization</label>
+                <input type="text" id="company" name="company" class="form-input" placeholder="Your company name">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subject">Subject</label>
+                <select id="subject" name="subject" class="form-select" required>
+                  <option value="" disabled selected>Select a subject</option>
+                  <option value="sales">Sales / Enterprise plan</option>
+                  <option value="developer">Developer support</option>
+                  <option value="integration">Meta integration help</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="security">Security inquiry</option>
+                  <option value="privacy">Privacy / Data request</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="Describe how we can help you..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:14px;">
+                Send Message →
+              </button>
+
+              <p style="color:var(--text-dim);font-size:12px;text-align:center;margin-top:12px;">
+                By submitting this form you agree to our <a href="privacy.html" style="color:var(--indigo-light);text-decoration:none;">Privacy Policy</a>.
+              </p>
+            </form>
+
+            <div class="form-success" id="form-success">
+              <span class="success-icon">✅</span>
+              <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white;margin-bottom:8px;">Message sent!</h3>
+              <p style="color:var(--text-muted);">Thank you for reaching out. Our team will respond within 24–48 hours.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin-top:96px;">
+          <h2 style="font-family:var(--font-heading);font-size:28px;font-weight:700;color:white;letter-spacing:-0.8px;text-align:center;margin-bottom:48px;">Common questions</h2>
+          <div class="grid-2">
+            <div class="card">
+              <h3>How do I get API credentials?</h3>
+              <p>Create a NewToken account and navigate to Settings → API Keys. Your first key is generated automatically. Scoped keys for production use can be created from the same panel.</p>
+            </div>
+            <div class="card">
+              <h3>Can I connect my existing WhatsApp Business account?</h3>
+              <p>Yes. NewToken's Embedded Signup allows you to connect an existing WhatsApp Business Account (WABA) or create a new one through the Meta onboarding flow directly inside NewToken.</p>
+            </div>
+            <div class="card">
+              <h3>Is there a free trial?</h3>
+              <p>NewToken offers a sandbox environment with limited API access for testing integrations. Contact our sales team to learn about trial options for production workloads.</p>
+            </div>
+            <div class="card">
+              <h3>What support is included?</h3>
+              <p>All plans include email support with a 48-hour response SLA. Enterprise plans include a dedicated account manager and priority support with a 4-hour response window.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-root"></div>
+  <script src="shared.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      const btn = form.querySelector('button[type="submit"]');
+
+      // Basic validation
+      const email = document.getElementById('email').value;
+      if (!email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      // Simulate form submission (replace with actual endpoint)
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      }, 900);
+    }
+  </script>
+</body>
+</html>

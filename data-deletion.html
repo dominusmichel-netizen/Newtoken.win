@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NewToken Data Deletion — Request deletion of your personal data or data processed through the NewToken platform.">
+  <meta name="robots" content="index, follow">
+  <title>Data Deletion Request — NewToken</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .deletion-form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: var(--font-body);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(67,97,238,0.15);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="badge"><span class="badge-dot"></span>Privacy</div>
+        <h1>Data Deletion Request</h1>
+        <p>Submit a request to delete personal data processed by NewToken or by businesses that use the NewToken platform.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div style="max-width:760px;margin:0 auto;">
+
+        <div class="info-box" style="margin-bottom:40px;">
+          <strong>For Meta App Users:</strong> If you connected to a business via WhatsApp, Instagram, or Messenger and that business uses the NewToken platform, you can request deletion of your data here. We will process your request within 30 days and confirm deletion by email.
+        </div>
+
+        <!-- WHAT GETS DELETED -->
+        <div style="margin-bottom:48px;">
+          <h2 style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:white;letter-spacing:-0.5px;margin-bottom:16px;">What data we delete</h2>
+          <div class="grid-2" style="gap:16px;">
+            <div class="card">
+              <h3>End-user data</h3>
+              <p>If you interacted with a business via WhatsApp or Instagram that uses NewToken, we can delete: your phone number or Instagram ID from our records, message metadata associated with your identifier, and any profile or contact data stored in our system.</p>
+            </div>
+            <div class="card">
+              <h3>Account data</h3>
+              <p>If you have a NewToken business account, deletion will remove: your account profile, API keys, configured automations, stored templates, analytics data, and associated payment information (subject to legal retention requirements).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DELETION FORM -->
+        <div class="deletion-form-card">
+          <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white;margin-bottom:24px;letter-spacing:-0.3px;">Submit Deletion Request</h3>
+
+          <form id="deletion-form" onsubmit="handleDeletion(event)" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="del-email">Your email address *</label>
+              <input type="email" id="del-email" name="email" class="form-input" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="del-phone">Phone number (if applicable)</label>
+              <input type="tel" id="del-phone" name="phone" class="form-input" placeholder="+55 11 99999-0000">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="del-type">Type of request *</label>
+              <select id="del-type" name="type" class="form-select" required>
+                <option value="" disabled selected>Select request type</option>
+                <option value="end-user">Delete my data as an end-user (WhatsApp / Instagram)</option>
+                <option value="account">Delete my NewToken business account</option>
+                <option value="specific">Delete specific data (describe below)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="del-details">Additional details (optional)</label>
+              <textarea id="del-details" name="details" class="form-textarea" placeholder="Describe the specific data you want deleted or provide any additional context..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:15px;padding:14px;">
+              Submit Deletion Request
+            </button>
+
+            <p style="color:var(--text-dim);font-size:12px;text-align:center;margin-top:12px;line-height:1.6;">
+              We will confirm receipt within 72 hours and complete deletion within 30 days.
+            </p>
+          </form>
+
+          <div id="deletion-success" style="display:none;text-align:center;padding:24px;">
+            <div style="font-size:48px;margin-bottom:16px;">✅</div>
+            <h3 style="font-family:var(--font-heading);font-size:20px;font-weight:700;color:white;margin-bottom:8px;">Request received</h3>
+            <p style="color:var(--text-muted);">We'll confirm receipt by email within 72 hours and process your deletion within 30 days. Reference: <span id="ref-code" style="font-family:var(--font-mono);color:var(--indigo-light);"></span></p>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div style="margin-bottom:80px;">
+          <h2 style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:white;letter-spacing:-0.5px;margin-bottom:24px;">Deletion process</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+              <span style="background:var(--gradient);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">1</span>
+              <div>
+                <div style="color:white;font-weight:600;font-size:15px;margin-bottom:4px;">Submit request</div>
+                <div style="color:var(--text-muted);font-size:14px;">Complete and submit the form above. You will receive a confirmation email with a reference number.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+              <span style="background:var(--gradient);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">2</span>
+              <div>
+                <div style="color:white;font-weight:600;font-size:15px;margin-bottom:4px;">Verification (within 72 hours)</div>
+                <div style="color:var(--text-muted);font-size:14px;">Our team will verify your identity to ensure we delete the correct data and protect against unauthorized deletion requests.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+              <span style="background:var(--gradient);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">3</span>
+              <div>
+                <div style="color:white;font-weight:600;font-size:15px;margin-bottom:4px;">Deletion (within 30 days)</div>
+                <div style="color:var(--text-muted);font-size:14px;">Your data is permanently deleted from our active systems. Some data may be retained in encrypted backups for up to 90 days before being purged.</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);">
+              <span style="background:var(--gradient);color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;">4</span>
+              <div>
+                <div style="color:white;font-weight:600;font-size:15px;margin-bottom:4px;">Confirmation</div>
+                <div style="color:var(--text-muted);font-size:14px;">You will receive a final confirmation email when deletion is complete.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prose" style="padding-bottom:80px;">
+          <h2>Exceptions to deletion</h2>
+          <p>Certain data may be retained even after a deletion request where required by law or legitimate business interest, including: data required for ongoing legal proceedings, tax records as required by Brazilian law, fraud prevention records, and anonymized aggregate analytics that cannot be linked to an individual.</p>
+          <h2>Contact</h2>
+          <p>For questions about data deletion or to contact our Data Protection team directly: <a href="mailto:privacy@newtoken.win">privacy@newtoken.win</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-root"></div>
+  <script src="shared.js"></script>
+  <script>
+    function handleDeletion(e) {
+      e.preventDefault();
+      const form = document.getElementById('deletion-form');
+      const success = document.getElementById('deletion-success');
+      const btn = form.querySelector('button[type="submit"]');
+      const ref = 'NT-' + Math.random().toString(36).substring(2,10).toUpperCase();
+
+      const email = document.getElementById('del-email').value;
+      if (!email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        document.getElementById('ref-code').textContent = ref;
+      }, 900);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NewToken Developer Documentation — API reference, SDKs, webhooks, and integration guides for WhatsApp Business API and Meta integrations.">
+  <meta name="robots" content="index, follow">
+  <title>Developers — NewToken API Documentation</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 0;
+      min-height: calc(100vh - 64px);
+      padding-top: 64px;
+    }
+
+    .docs-sidebar {
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+      border-right: 1px solid var(--border);
+      padding: 32px 0;
+      background: var(--bg);
+    }
+
+    .sidebar-section {
+      padding: 0 20px;
+      margin-bottom: 28px;
+    }
+
+    .sidebar-section h4 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      padding: 0 8px;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 7px 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 6px;
+      transition: var(--transition);
+      margin-bottom: 2px;
+    }
+
+    .sidebar-link:hover, .sidebar-link.active {
+      color: var(--text);
+      background: rgba(67,97,238,0.1);
+    }
+
+    .sidebar-link.active {
+      color: var(--indigo-light);
+    }
+
+    .docs-content {
+      padding: 48px 56px;
+      max-width: 900px;
+    }
+
+    .docs-section {
+      margin-bottom: 64px;
+      scroll-margin-top: 80px;
+    }
+
+    .docs-section h2 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .docs-section h3 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: -0.3px;
+      margin: 32px 0 12px;
+    }
+
+    .docs-section p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .method-badge {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-right: 8px;
+    }
+
+    .method-post { background: rgba(16,185,129,0.15); color: var(--emerald); }
+    .method-get { background: rgba(67,97,238,0.15); color: var(--indigo-light); }
+    .method-delete { background: rgba(239,68,68,0.15); color: var(--red); }
+
+    .endpoint-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: var(--transition);
+    }
+
+    .endpoint-row:hover {
+      border-color: var(--border-bright);
+    }
+
+    .endpoint-path {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .endpoint-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 16px 0;
+    }
+
+    .param-table th {
+      text-align: left;
+      padding: 10px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .param-table td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(99,120,255,0.06);
+      vertical-align: top;
+    }
+
+    .param-table tr:last-child td { border-bottom: none; }
+
+    .param-name {
+      font-family: var(--font-mono);
+      color: var(--indigo-light);
+      font-size: 13px;
+    }
+
+    .param-type {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.04);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .param-required {
+      font-size: 11px;
+      color: var(--emerald);
+      font-family: var(--font-mono);
+    }
+
+    .param-desc { color: var(--text-muted); }
+
+    .sdk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .sdk-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .sdk-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+
+    .sdk-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .sdk-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .sdk-install {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      background: rgba(255,255,255,0.04);
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-top: 8px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .docs-layout { grid-template-columns: 1fr; }
+      .docs-sidebar { display: none; }
+      .docs-content { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-root"></div>
+
+  <div class="docs-layout">
+    <!-- SIDEBAR -->
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <div class="sidebar-section">
+        <h4>Getting Started</h4>
+        <a href="#overview" class="sidebar-link active">Overview</a>
+        <a href="#authentication" class="sidebar-link">Authentication</a>
+        <a href="#quickstart" class="sidebar-link">Quick Start</a>
+        <a href="#sdks" class="sidebar-link">SDKs</a>
+      </div>
+      <div class="sidebar-section">
+        <h4>API Reference</h4>
+        <a href="#messages" class="sidebar-link">Messages</a>
+        <a href="#automation" class="sidebar-link">Automation</a>
+        <a href="#webhooks" class="sidebar-link">Webhooks</a>
+        <a href="#accounts" class="sidebar-link">Accounts</a>
+      </div>
+      <div class="sidebar-section">
+        <h4>Meta Integrations</h4>
+        <a href="#whatsapp" class="sidebar-link">WhatsApp Business</a>
+        <a href="#instagram" class="sidebar-link">Instagram Graph API</a>
+        <a href="#embedded-signup" class="sidebar-link">Embedded Signup</a>
+      </div>
+      <div class="sidebar-section">
+        <h4>Resources</h4>
+        <a href="#errors" class="sidebar-link">Error Codes</a>
+        <a href="#rate-limits" class="sidebar-link">Rate Limits</a>
+        <a href="contact.html" class="sidebar-link">Support</a>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="docs-content" id="api">
+      <!-- OVERVIEW -->
+      <div class="docs-section" id="overview">
+        <div class="badge" style="margin-bottom:12px;"><span class="badge-dot"></span>API v2.1</div>
+        <h2>NewToken API Reference</h2>
+        <p>The NewToken API provides a unified, RESTful interface for interacting with Meta's messaging platforms. All requests are made over HTTPS and return JSON responses.</p>
+        <div class="info-box">
+          <strong>Base URL:</strong><br>
+          <code style="font-family:var(--font-mono);font-size:14px;color:var(--cyan);">https://api.newtoken.win/v2</code>
+        </div>
+        <p>All API requests must include your API key in the Authorization header. Keys can be generated from the NewToken dashboard under <strong>Settings → API Keys</strong>.</p>
+      </div>
+
+      <!-- AUTHENTICATION -->
+      <div class="docs-section" id="authentication">
+        <h2>Authentication</h2>
+        <p>NewToken uses Bearer token authentication. Include your API key in every request using the <code style="font-family:var(--font-mono);font-size:13px;color:var(--indigo-light);">Authorization</code> header.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots"><div class="code-dot dot-red"></div><div class="code-dot dot-yellow"></div><div class="code-dot dot-green"></div></div>
+            <span class="code-filename">HTTP Request</span>
+          </div>
+          <div class="code-body">
+            <pre><span class="tok-keyword">POST</span> <span class="tok-string">https://api.newtoken.win/v2/messages</span>
+<span class="tok-prop">Authorization:</span> <span class="tok-var">Bearer nt_live_xxxxxxxxxxxxxxxxxxxxxxxx</span>
+<span class="tok-prop">Content-Type:</span> <span class="tok-var">application/json</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK START -->
+      <div class="docs-section" id="quickstart">
+        <h2>Quick Start</h2>
+        <p>Send your first WhatsApp message using the NewToken API in under 2 minutes.</p>
+        <h3>1. Install the SDK</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots"><div class="code-dot dot-red"></div><div class="code-dot dot-yellow"></div><div class="code-dot dot-green"></div></div>
+            <span class="code-filename">Terminal</span>
+          </div>
+          <div class="code-body">
+            <pre><span class="tok-comment"># Python</span>
+<span class="tok-var">pip install newtoken-sdk</span>
+
+<span class="tok-comment"># Node.js</span>
+<span class="tok-var">npm install @newtoken/sdk</span></pre>
+          </div>
+        </div>
+        <h3>2. Send a message</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots"><div class="code-dot dot-red"></div><div class="code-dot dot-yellow"></div><div class="code-dot dot-green"></div></div>
+            <span class="code-filename">example.py</span>
+          </div>
+          <div class="code-body">
+            <pre><span class="tok-keyword">from</span> <span class="tok-var">newtoken</span> <span class="tok-keyword">import</span> <span class="tok-function">Client</span>
+
+<span class="tok-var">client</span> <span class="tok-punct">=</span> <span class="tok-function">Client</span><span class="tok-punct">(</span><span class="tok-prop">api_key</span><span class="tok-punct">=</span><span class="tok-string">"nt_live_xxxxxxxxxxxx"</span><span class="tok-punct">)</span>
+
+<span class="tok-var">msg</span> <span class="tok-punct">=</span> <span class="tok-var">client</span><span class="tok-punct">.</span><span class="tok-function">whatsapp</span><span class="tok-punct">.</span><span class="tok-function">messages</span><span class="tok-punct">.</span><span class="tok-function">send</span><span class="tok-punct">(</span>
+    <span class="tok-prop">phone_number_id</span><span class="tok-punct">=</span><span class="tok-string">"YOUR_PHONE_NUMBER_ID"</span><span class="tok-punct">,</span>
+    <span class="tok-prop">to</span><span class="tok-punct">=</span><span class="tok-string">"55119999000"</span><span class="tok-punct">,</span>
+    <span class="tok-prop">body</span><span class="tok-punct">=</span><span class="tok-string">"Hello from NewToken!"</span>
+<span class="tok-punct">)</span>
+
+<span class="tok-function">print</span><span class="tok-punct">(</span><span class="tok-var">msg</span><span class="tok-punct">.</span><span class="tok-prop">id</span><span class="tok-punct">,</span> <span class="tok-var">msg</span><span class="tok-punct">.</span><span class="tok-prop">status</span><span class="tok-punct">)</span>
+<span class="tok-comment"># → wamid.HBgL...  sent</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- SDKS -->
+      <div class="docs-section" id="sdks">
+        <h2>SDKs</h2>
+        <p>Official NewToken SDKs are available for the most common languages and platforms.</p>
+        <div class="sdk-grid">
+          <div class="sdk-card">
+            <span class="sdk-icon">🐍</span>
+            <div class="sdk-name">Python</div>
+            <div style="color:var(--text-muted);font-size:13px;">v2.1.0</div>
+            <span class="sdk-install">pip install newtoken-sdk</span>
+          </div>
+          <div class="sdk-card">
+            <span class="sdk-icon">⬡</span>
+            <div class="sdk-name">Node.js</div>
+            <div style="color:var(--text-muted);font-size:13px;">v2.1.0</div>
+            <span class="sdk-install">npm i @newtoken/sdk</span>
+          </div>
+          <div class="sdk-card">
+            <span class="sdk-icon">🔷</span>
+            <div class="sdk-name">TypeScript</div>
+            <div style="color:var(--text-muted);font-size:13px;">v2.1.0</div>
+            <span class="sdk-install">npm i @newtoken/sdk</span>
+          </div>
+          <div class="sdk-card">
+            <span class="sdk-icon">🌐</span>
+            <div class="sdk-name">REST API</div>
+            <div style="color:var(--text-muted);font-size:13px;">HTTP/JSON</div>
+            <span class="sdk-install">curl / any client</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MESSAGES API -->
+      <div class="docs-section" id="messages">
+        <h2>Messages API</h2>
+        <p>Send and receive messages across Meta's messaging platforms through a unified endpoint.</p>
+
+        <div class="endpoint-row">
+          <span class="method-badge method-post">POST</span>
+          <div>
+            <div class="endpoint-path">/v2/whatsapp/messages</div>
+            <div class="endpoint-desc">Send a WhatsApp message to a recipient</div>
+          </div>
+        </div>
+        <div class="endpoint-row">
+          <span class="method-badge method-get">GET</span>
+          <div>
+            <div class="endpoint-path">/v2/whatsapp/messages/{message_id}</div>
+            <div class="endpoint-desc">Retrieve message status and metadata</div>
+          </div>
+        </div>
+        <div class="endpoint-row">
+          <span class="method-badge method-post">POST</span>
+          <div>
+            <div class="endpoint-path">/v2/instagram/messages</div>
+            <div class="endpoint-desc">Send an Instagram Direct Message</div>
+          </div>
+        </div>
+
+        <h3>Request Parameters</h3>
+        <table class="param-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Required</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="param-name">phone_number_id</span></td>
+              <td><span class="param-type">string</span></td>
+              <td><span class="param-required">required</span></td>
+              <td class="param-desc">Your Meta phone number ID from Business Manager</td>
+            </tr>
+            <tr>
+              <td><span class="param-name">to</span></td>
+              <td><span class="param-type">string</span></td>
+              <td><span class="param-required">required</span></td>
+              <td class="param-desc">Recipient's phone number in E.164 format</td>
+            </tr>
+            <tr>
+              <td><span class="param-name">body</span></td>
+              <td><span class="param-type">string</span></td>
+              <td><span class="param-required">required</span></td>
+              <td class="param-desc">Message text content (max 4096 characters)</td>
+            </tr>
+            <tr>
+              <td><span class="param-name">template_id</span></td>
+              <td><span class="param-type">string</span></td>
+              <td><span class="param-type">optional</span></td>
+              <td class="param-desc">ID of an approved Meta message template</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- WEBHOOKS -->
+      <div class="docs-section" id="webhooks">
+        <h2>Webhooks</h2>
+        <p>NewToken delivers real-time events to your endpoint via authenticated HTTPS POST requests. Configure your webhook URL in the NewToken dashboard.</p>
+        <h3>Webhook verification</h3>
+        <p>Meta requires webhook endpoints to respond to a GET verification request before events are delivered. NewToken handles Meta's verification protocol automatically — you only need to implement the NewToken signature check.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots"><div class="code-dot dot-red"></div><div class="code-dot dot-yellow"></div><div class="code-dot dot-green"></div></div>
+            <span class="code-filename">webhook_handler.py</span>
+          </div>
+          <div class="code-body">
+            <pre><span class="tok-keyword">from</span> <span class="tok-var">flask</span> <span class="tok-keyword">import</span> <span class="tok-function">Flask</span><span class="tok-punct">,</span> <span class="tok-var">request</span>
+<span class="tok-keyword">from</span> <span class="tok-var">newtoken</span> <span class="tok-keyword">import</span> <span class="tok-function">verify_signature</span>
+
+<span class="tok-var">app</span> <span class="tok-punct">=</span> <span class="tok-function">Flask</span><span class="tok-punct">(</span><span class="tok-var">__name__</span><span class="tok-punct">)</span>
+
+<span class="tok-keyword">@app</span><span class="tok-punct">.</span><span class="tok-function">route</span><span class="tok-punct">(</span><span class="tok-string">"/webhook"</span><span class="tok-punct">,</span> <span class="tok-prop">methods</span><span class="tok-punct">=[</span><span class="tok-string">"POST"</span><span class="tok-punct">])</span>
+<span class="tok-keyword">def</span> <span class="tok-function">receive_event</span><span class="tok-punct">():</span>
+    <span class="tok-comment"># Verify NewToken signature</span>
+    <span class="tok-var">sig</span> <span class="tok-punct">=</span> <span class="tok-var">request</span><span class="tok-punct">.</span><span class="tok-function">headers</span><span class="tok-punct">.</span><span class="tok-function">get</span><span class="tok-punct">(</span><span class="tok-string">"X-NewToken-Signature"</span><span class="tok-punct">)</span>
+    <span class="tok-keyword">if not</span> <span class="tok-function">verify_signature</span><span class="tok-punct">(</span><span class="tok-var">request</span><span class="tok-punct">.</span><span class="tok-var">data</span><span class="tok-punct">,</span> <span class="tok-var">sig</span><span class="tok-punct">):</span>
+        <span class="tok-keyword">return</span> <span class="tok-string">"Unauthorized"</span><span class="tok-punct">,</span> <span class="tok-number">401</span>
+
+    <span class="tok-var">event</span> <span class="tok-punct">=</span> <span class="tok-var">request</span><span class="tok-punct">.</span><span class="tok-function">json</span><span class="tok-punct">()</span>
+    <span class="tok-function">handle_event</span><span class="tok-punct">(</span><span class="tok-var">event</span><span class="tok-punct">)</span>
+    <span class="tok-keyword">return</span> <span class="tok-string">""</span><span class="tok-punct">,</span> <span class="tok-number">200</span></pre>
+          </div>
+        </div>
+        <h3>Example webhook payload</h3>
+        <div class="code-block">
+          <div class="code-header">
+            <div class="code-dots"><div class="code-dot dot-red"></div><div class="code-dot dot-yellow"></div><div class="code-dot dot-green"></div></div>
+            <span class="code-filename">payload.json</span>
+          </div>
+          <div class="code-body">
+            <pre><span class="tok-punct">{</span>
+  <span class="tok-prop">"event"</span><span class="tok-punct">:</span> <span class="tok-string">"message.received"</span><span class="tok-punct">,</span>
+  <span class="tok-prop">"timestamp"</span><span class="tok-punct">:</span> <span class="tok-string">"2026-03-14T10:22:00Z"</span><span class="tok-punct">,</span>
+  <span class="tok-prop">"data"</span><span class="tok-punct">:</span> <span class="tok-punct">{</span>
+    <span class="tok-prop">"message_id"</span><span class="tok-punct">:</span> <span class="tok-string">"wamid.HBgLNTUxMT..."</span><span class="tok-punct">,</span>
+    <span class="tok-prop">"from"</span><span class="tok-punct">:</span> <span class="tok-string">"5511999990000"</span><span class="tok-punct">,</span>
+    <span class="tok-prop">"body"</span><span class="tok-punct">:</span> <span class="tok-string">"Olá, preciso de ajuda"</span><span class="tok-punct">,</span>
+    <span class="tok-prop">"channel"</span><span class="tok-punct">:</span> <span class="tok-string">"whatsapp"</span><span class="tok-punct">,</span>
+    <span class="tok-prop">"business_account_id"</span><span class="tok-punct">:</span> <span class="tok-string">"WABA_ID_HERE"</span>
+  <span class="tok-punct">}</span>
+<span class="tok-punct">}</span></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- META INTEGRATIONS -->
+      <div class="docs-section" id="whatsapp">
+        <h2>WhatsApp Business Integration</h2>
+        <p>NewToken is certified to use the WhatsApp Business API via the Cloud API hosted by Meta. Before sending messages, your business client's WhatsApp Business Account (WABA) must be connected to NewToken.</p>
+        <h3>Permissions required</h3>
+        <div class="info-box">
+          The following Meta API permissions are required and pre-approved on the NewToken app:
+          <br><br>
+          <code style="font-family:var(--font-mono);font-size:13px;color:var(--cyan);">whatsapp_business_management</code> &nbsp;·&nbsp;
+          <code style="font-family:var(--font-mono);font-size:13px;color:var(--cyan);">whatsapp_business_messaging</code> &nbsp;·&nbsp;
+          <code style="font-family:var(--font-mono);font-size:13px;color:var(--cyan);">pages_manage_metadata</code>
+        </div>
+      </div>
+
+      <!-- EMBEDDED SIGNUP -->
+      <div class="docs-section" id="embedded-signup">
+        <h2>Embedded Signup</h2>
+        <p>Embedded Signup allows your business clients to connect their WhatsApp Business Account to NewToken without leaving your product. After connection, NewToken manages token refresh and API access automatically.</p>
+        <h3>Implementation flow</h3>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;">
+            <span style="background:var(--gradient);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">1</span>
+            <div>
+              <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">Launch Embedded Signup modal</div>
+              <div style="color:var(--text-muted);font-size:13px;">Client clicks "Connect WhatsApp" button in your product. NewToken opens the Meta Embedded Signup flow in an iframe.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;">
+            <span style="background:var(--gradient);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">2</span>
+            <div>
+              <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">Meta authenticates client</div>
+              <div style="color:var(--text-muted);font-size:13px;">Client authorizes NewToken to access their WhatsApp Business Account. Meta issues a short-lived access token.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;">
+            <span style="background:var(--gradient);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">3</span>
+            <div>
+              <div style="color:white;font-weight:600;font-size:14px;margin-bottom:4px;">NewToken stores WABA ID</div>
+              <div style="color:var(--text-muted);font-size:13px;">NewToken exchanges the token for a system token and stores the WABA ID. Automation is immediately available.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RATE LIMITS -->
+      <div class="docs-section" id="rate-limits">
+        <h2>Rate Limits</h2>
+        <p>NewToken enforces rate limits to maintain API stability. Limits are applied per API key.</p>
+        <table class="param-table">
+          <thead>
+            <tr><th>Endpoint</th><th>Limit</th><th>Window</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="param-name">/v2/whatsapp/messages</td>
+              <td style="color:var(--text-muted);">1,000 requests</td>
+              <td style="color:var(--text-dim);font-family:var(--font-mono);font-size:12px;">per minute</td>
+            </tr>
+            <tr>
+              <td class="param-name">/v2/instagram/messages</td>
+              <td style="color:var(--text-muted);">500 requests</td>
+              <td style="color:var(--text-dim);font-family:var(--font-mono);font-size:12px;">per minute</td>
+            </tr>
+            <tr>
+              <td class="param-name">All other endpoints</td>
+              <td style="color:var(--text-muted);">200 requests</td>
+              <td style="color:var(--text-dim);font-family:var(--font-mono);font-size:12px;">per minute</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="info-box">When a rate limit is exceeded, the API returns HTTP <strong>429 Too Many Requests</strong>. Retry after the duration specified in the <code style="font-family:var(--font-mono);font-size:13px;color:var(--cyan);">Retry-After</code> response header.</div>
+      </div>
+
+      <div style="padding:32px 0;border-top:1px solid var(--border);text-align:center;">
+        <p style="color:var(--text-muted);font-size:15px;margin-bottom:20px;">Need help? Contact our developer support team.</p>
+        <a href="contact.html" class="btn-primary">Contact Support →</a>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-root"></div>
+  <script src="shared.js"></script>
+</body>
+</html>
